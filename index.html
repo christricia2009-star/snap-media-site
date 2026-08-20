@@ -1,1449 +1,602 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Snap Media — photograph and identify DVDs, VHS, Blu-ray, cassettes, and vinyl, track your collection, and trade peer-to-peer. Physical media collector app. iOS beta; Android coming soon." />
-  <meta name="theme-color" content="#070b12" />
-  <link rel="icon" type="image/png" href="icon.png" />
-  <link rel="apple-touch-icon" href="app-icon.jpg" />
-  <meta property="og:title" content="Snap Media — Identify, Collect &amp; Trade Physical Media" />
-  <meta property="og:description" content="Photograph DVDs, VHS, Blu-ray, cassettes, and vinyl. AI-assisted ID, collection tracking, and peer-to-peer trades. iOS beta." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snap Media — Identify, collect &amp; trade physical media</title>
+  <meta name="description" content="Photograph DVDs, VHS, Blu-ray, cassettes, and vinyl. AI-assisted ID, a personal shelf, and peer-to-peer trades. Independent collector app. iOS and Android beta." />
+  <meta name="theme-color" content="#050505" />
+  <link rel="canonical" href="https://snapmedia.app/" />
+
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="app-icon.jpg" />
-  <meta name="keywords" content="physical media, DVD collection, VHS collector, Blu-ray, cassette tapes, vinyl records, media trading, Snap Media" />
-  <title>Snap Media — Identify, Collect &amp; Trade Physical Media · iOS Beta</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: {
-              950: '#06050a',
-              900: '#0a0910',
-              850: '#100e18',
-              800: '#16141f',
-              700: '#1e1b2a',
-              600: '#2a2638',
-              500: '#3a354d',
-            },
-            media: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              200: '#bfdbfe',
-              300: '#93c5fd',
-              400: '#60a5fa',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e3a8a',
-              900: '#172554',
-            },
-            amber: {
-              300: '#fcd34d',
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706',
-            },
-            muted: {
-              300: '#d4d0dc',
-              400: '#a39eb0',
-              500: '#7a7488',
-            }
-          },
-          fontFamily: {
-            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
-            display: ['"Syne"', 'system-ui', 'sans-serif'],
-          },
-          boxShadow: {
-            'glow': '0 0 40px -8px rgba(59, 130, 246, 0.35)',
-            'glow-lg': '0 0 80px -12px rgba(59, 130, 246, 0.4)',
-            'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255,255,255,0.06)',
-          },
-        },
-      },
-    };
-  </script>
+  <meta property="og:title" content="Snap Media — Identify, collect &amp; trade physical media" />
+  <meta property="og:description" content="Snap a case. Keep a shelf. Trade with collectors. iOS and Android beta." />
+  <meta property="og:image" content="assets/img/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Snap Media — Identify, collect &amp; trade physical media" />
+  <meta name="twitter:description" content="AI-assisted media ID, a personal collection, and peer trades. iOS and Android beta." />
+  <meta name="twitter:image" content="assets/img/og.png" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --accent: #3b82f6;
-      --accent-soft: rgba(59, 130, 246, 0.14);
-      --accent-border: rgba(59, 130, 246, 0.35);
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site.css?v=2" />
 
-    body {
-      background-color: #070b12;
-      color: #ebe8f0;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 100;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    .phone-frame {
-      position: relative;
-      width: 280px;
-      height: 572px;
-      border-radius: 44px;
-      padding: 10px;
-      background: linear-gradient(160deg, #2a2438 0%, #14121c 40%, #0a0910 100%);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.08),
-        0 40px 80px -20px rgba(0,0,0,0.85),
-        0 0 40px rgba(59, 130, 246, 0.14),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-
-    .phone-screen {
-      width: 100%;
-      height: 100%;
-      border-radius: 36px;
-      overflow: hidden;
-      background: #0c0a12;
-      position: relative;
-    }
-
-    .notch {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 96px;
-      height: 28px;
-      background: #000;
-      border-radius: 20px;
-      z-index: 20;
-    }
-
-    .status-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 22px 0;
-      font-size: 11px;
-      font-weight: 600;
-      color: #7a7488;
-      letter-spacing: 0.02em;
-    }
-
-    .app-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 16px 8px;
-    }
-
-    .app-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      color: #60a5fa;
-      letter-spacing: -0.02em;
-    }
-
-    .pin-preview {
-      margin: 0 14px;
-      border-radius: 16px;
-      height: 168px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 40% 35%, rgba(59, 130, 246, 0.28) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.16) 0%, transparent 40%),
-        linear-gradient(160deg, #1e1a2e 0%, #12101a 55%, #0a0910 100%);
-    }
-
-    /* Stylized media title (CSS only) */
-    .enamel-pin {
-      position: absolute;
-      width: 88px;
-      height: 88px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -52%);
-    }
-    .enamel-pin .pin-face {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.35), transparent 40%),
-        radial-gradient(circle at 50% 50%, #60a5fa 0%, #1d4ed8 55%, #831843 100%);
-      border: 3px solid #f59e0b;
-      box-shadow:
-        0 8px 20px rgba(0,0,0,0.45),
-        inset 0 2px 6px rgba(255,255,255,0.25),
-        inset 0 -3px 8px rgba(0,0,0,0.25);
-      position: relative;
-    }
-    .enamel-pin .pin-face::after {
-      content: '';
-      position: absolute;
-      inset: 14px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(255,255,255,0.35);
-    }
-    .enamel-pin .pin-clasp {
-      position: absolute;
-      bottom: -2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 18px;
-      height: 10px;
-      border-radius: 2px 2px 4px 4px;
-      background: linear-gradient(180deg, #c5c0b0, #6b6560);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-    }
-
-    .shutter-ring {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 2.5px solid rgba(255,255,255,0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(4px);
-    }
-    .shutter-ring::after {
-      content: '';
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.92);
-    }
-
-    .angle-dots {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      gap: 4px;
-    }
-    .angle-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.25);
-    }
-    .angle-dot.active {
-      background: #60a5fa;
-      box-shadow: 0 0 6px rgba(244, 114, 182, 0.7);
-    }
-
-    .result-card {
-      margin: 8px 14px 0;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .result-card.top {
-      background: linear-gradient(135deg, rgba(59,130,246,0.14), rgba(212,175,55,0.06));
-      border-color: rgba(59,130,246,0.35);
-    }
-    .result-rank {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      background: rgba(255,255,255,0.06);
-      font-size: 10px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #7a7488;
-      flex-shrink: 0;
-    }
-    .result-card.top .result-rank {
-      background: rgba(59,130,246,0.25);
-      color: #93c5fd;
-    }
-    .confidence-bar {
-      height: 3px;
-      border-radius: 2px;
-      background: rgba(255,255,255,0.08);
-      overflow: hidden;
-      margin-top: 4px;
-    }
-    .confidence-fill {
-      height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(90deg, #1d4ed8, #60a5fa);
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-    }
-
-    .nav-link {
-      color: #a39eb0;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-link:hover { color: #93c5fd; }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 50%, #2563eb 100%);
-      color: #1a0a12;
-      font-weight: 700;
-      font-size: 14px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 4px 20px -4px rgba(59, 130, 246, 0.55);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 28px -4px rgba(59, 130, 246, 0.65);
-    }
-    .btn-primary-lg {
-      padding: 16px 32px;
-      font-size: 16px;
-    }
-
-    .feature-card {
-      background: linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 20px;
-      padding: 28px;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    }
-    .feature-card:hover {
-      border-color: var(--accent-border);
-      transform: translateY(-3px);
-      box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5), 0 0 30px -10px rgba(59, 130, 246, 0.14);
-    }
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: var(--accent-soft);
-      border: 1px solid var(--accent-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      color: var(--accent);
-    }
-
-    .step-num {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #60a5fa, #1d4ed8);
-      color: #1a0a12;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 24px -6px rgba(59, 130, 246, 0.45);
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 600;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #d4d0dc;
-    }
-
-    .category-chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #d4d0dc;
-      transition: border-color 0.2s, background 0.2s, color 0.2s;
-    }
-    .category-chip:hover {
-      border-color: rgba(59, 130, 246, 0.35);
-      background: rgba(59, 130, 246, 0.1);
-      color: #93c5fd;
-    }
-
-    .trust-strip {
-      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.06), transparent);
-      border-top: 1px solid rgba(59,130,246,0.12);
-      border-bottom: 1px solid rgba(59,130,246,0.12);
-    }
-
-    .grid-bg {
-      background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-
-    .journal-card {
-      background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-    .journal-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-border);
-    }
-    .pin-thumb {
-      height: 110px;
-      position: relative;
-    }
-
-    .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
-    }
-    .mobile-menu.open { max-height: 380px; }
-
-    #navbar.scrolled nav {
-      background: rgba(6, 5, 10, 0.92);
-      border-color: rgba(59, 130, 246, 0.14);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    }
-
-    @media (max-width: 640px) {
-      .phone-frame {
-        width: 240px;
-        height: 490px;
-        border-radius: 36px;
-      }
-      .phone-screen { border-radius: 28px; }
-      .pin-preview { height: 130px; }
-    }
-  
-    /* Media case mockup (CSS only) */
-    .media-preview {
-      background:
-        radial-gradient(ellipse at 40% 35%, rgba(59, 130, 246, 0.28) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.14) 0%, transparent 40%),
-        linear-gradient(160deg, #121a28 0%, #0a1018 55%, #070b12 100%) !important;
-    }
-    .media-case {
-      position: absolute;
-      width: 100px;
-      height: 120px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -52%) rotate(-6deg);
-      display: flex;
-      filter: drop-shadow(0 12px 20px rgba(0,0,0,0.5));
-    }
-    .case-spine {
-      width: 14px;
-      height: 100%;
-      border-radius: 3px 0 0 3px;
-      background: linear-gradient(180deg, #1e3a5f 0%, #0f172a 100%);
-      border: 1px solid rgba(147, 197, 253, 0.25);
-      border-right: none;
-    }
-    .case-cover {
-      flex: 1;
-      border-radius: 0 4px 4px 0;
-      background: linear-gradient(145deg, #0c4a6e 0%, #164e63 40%, #083344 100%);
-      border: 1px solid rgba(103, 232, 249, 0.35);
-      border-left: none;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 8px 6px;
-    }
-    .case-art {
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 2px,
-          rgba(34, 211, 238, 0.08) 2px,
-          rgba(34, 211, 238, 0.08) 3px
-        ),
-        radial-gradient(ellipse at 50% 40%, rgba(34, 211, 238, 0.35), transparent 55%);
-    }
-    .case-title {
-      position: relative;
-      font-family: 'Syne', sans-serif;
-      font-size: 8px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: #a5f3fc;
-      text-align: center;
-      line-height: 1.2;
-    }
-    .case-format {
-      position: relative;
-      margin-top: 4px;
-      font-size: 7px;
-      font-weight: 700;
-      color: rgba(165, 243, 252, 0.7);
-      letter-spacing: 0.12em;
-    }
-
-    /* Collection thumbs */
-    .thumb-dvd, .thumb-vhs, .thumb-vinyl, .thumb-cassette {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .thumb-dvd {
-      width: 44px;
-      height: 60px;
-      border-radius: 3px;
-      background: linear-gradient(145deg, #0e7490, #155e75);
-      border: 2px solid #67e8f9;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-    }
-    .thumb-dvd::after {
-      content: 'DVD';
-      position: absolute;
-      bottom: 6px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      font-size: 8px;
-      font-weight: 800;
-      color: #a5f3fc;
-      letter-spacing: 0.08em;
-    }
-    .thumb-vhs {
-      width: 58px;
-      height: 36px;
-      border-radius: 3px;
-      background: linear-gradient(160deg, #78350f, #451a03);
-      border: 2px solid #fbbf24;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-    }
-    .thumb-vhs::before {
-      content: '';
-      position: absolute;
-      left: 8px;
-      right: 8px;
-      top: 6px;
-      height: 10px;
-      background: rgba(0,0,0,0.35);
-      border-radius: 1px;
-    }
-    .thumb-vhs::after {
-      content: 'VHS';
-      position: absolute;
-      bottom: 4px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      font-size: 8px;
-      font-weight: 800;
-      color: #fde68a;
-    }
-    .thumb-vinyl {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 50% 50%, #1e293b 0 8px, transparent 9px),
-        repeating-radial-gradient(circle at 50% 50%, #0f172a 0 2px, #1e293b 2px 4px);
-      border: 2px solid #94a3b8;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.45);
-    }
-    .thumb-vinyl::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 10px;
-      height: 10px;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background: #3b82f6;
-      border: 1px solid #93c5fd;
-    }
-    .thumb-cassette {
-      width: 54px;
-      height: 34px;
-      border-radius: 4px;
-      background: linear-gradient(160deg, #5b21b6, #3b0764);
-      border: 2px solid #c4b5fd;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-    }
-    .thumb-cassette::before,
-    .thumb-cassette::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 12px;
-      height: 12px;
-      margin-top: -6px;
-      border-radius: 50%;
-      border: 2px solid rgba(196, 181, 253, 0.7);
-      background: #1e1b4b;
-    }
-    .thumb-cassette::before { left: 10px; }
-    .thumb-cassette::after { right: 10px; }
-
-    /* Override enamel-pin gold borders if any remain */
-    .app-logo { color: #60a5fa !important; }
-
-    body {
-      color: #e8eef6;
-    }
-    .phone-frame {
-      background: linear-gradient(160deg, #1e293b 0%, #0f172a 40%, #070b12 100%) !important;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.08),
-        0 40px 80px -20px rgba(0,0,0,0.85),
-        0 0 40px rgba(59, 130, 246, 0.14),
-        inset 0 1px 0 rgba(255,255,255,0.1) !important;
-    }
-    .phone-screen { background: #080d14 !important; }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%) !important;
-      box-shadow: 0 0 24px -4px rgba(59, 130, 246, 0.55), inset 0 1px 0 rgba(255,255,255,0.2) !important;
-    }
-    .btn-primary:hover {
-      box-shadow: 0 0 32px -2px rgba(59, 130, 246, 0.7), inset 0 1px 0 rgba(255,255,255,0.25) !important;
-    }
-    .feature-icon {
-      background: rgba(59, 130, 246, 0.12) !important;
-      color: #60a5fa !important;
-      border-color: rgba(59, 130, 246, 0.25) !important;
-    }
-    .step-num {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
-      box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.5) !important;
-    }
-    .category-chip {
-      border-color: rgba(59, 130, 246, 0.25) !important;
-    }
-    .category-chip:hover {
-      border-color: rgba(59, 130, 246, 0.5) !important;
-      background: rgba(59, 130, 246, 0.1) !important;
-    }
-    .confidence-fill {
-      background: linear-gradient(90deg, #2563eb, #60a5fa) !important;
-    }
-    .result-card.top {
-      border-color: rgba(59, 130, 246, 0.3) !important;
-      background: rgba(59, 130, 246, 0.08) !important;
-    }
-
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Snap Media",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "iOS, Android",
+    "description": "Photograph DVDs, VHS, Blu-ray, cassettes, and vinyl. AI-assisted identification, a personal collection, and peer-to-peer trades.",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/PreOrder",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 </head>
-<body class="font-sans antialiased overflow-x-hidden">
+<body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- ========== NAVBAR ========== -->
-  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
-    <div class="mx-auto max-w-6xl px-5 sm:px-6">
-      <nav class="mt-3 flex items-center justify-between rounded-2xl border border-white/[0.06] bg-ink-900/80 px-4 py-3 backdrop-blur-xl sm:px-5">
-        <a href="#top" class="font-display text-lg font-bold tracking-tight text-media-400 sm:text-xl">
-          Snap Media
-        </a>
-
-        <div class="hidden items-center gap-8 md:flex">
-          <a href="#features" class="nav-link">Features</a>
-          <a href="#how-it-works" class="nav-link">How it Works</a>
-          <a href="#collection" class="nav-link">Collection</a>
-          <a href="#faq" class="nav-link">FAQ</a>
-          <a href="#get-app" class="nav-link">Get the App</a>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <a href="mailto:admin@snapcollectibles.com?subject=Snap%20Media%20iOS%20Beta" class="btn-primary hidden sm:inline-flex">
-            iOS beta
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <button id="menu-toggle" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-muted-400 md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
-            <svg id="menu-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-            <svg id="menu-icon-close" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </button>
-        </div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top">
+        <img src="assets/img/mark.svg" width="28" height="28" alt="" />
+        <span class="brand-name">Snap Media</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#snap">Snap</a>
+        <a href="#collection">Collection</a>
+        <a href="#trades">Trades</a>
+        <a href="#faq">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a class="btn btn-primary nav-cta" href="#download">Request beta</a>
       </nav>
-
-      <div id="mobile-menu" class="mobile-menu mt-2 rounded-2xl border border-white/[0.06] bg-ink-900/95 backdrop-blur-xl md:hidden">
-        <div class="flex flex-col gap-1 p-3">
-          <a href="#features" class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-medium text-muted-400 hover:bg-white/5 hover:text-media-300">Features</a>
-          <a href="#how-it-works" class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-medium text-muted-400 hover:bg-white/5 hover:text-media-300">How it Works</a>
-          <a href="#collection" class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-medium text-muted-400 hover:bg-white/5 hover:text-media-300">Collection</a>
-          <a href="#faq" class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-medium text-muted-400 hover:bg-white/5 hover:text-media-300">FAQ</a>
-          <a href="#privacy" class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-medium text-muted-400 hover:bg-white/5 hover:text-media-300">Privacy</a>
-          <a href="#get-app" class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-medium text-muted-400 hover:bg-white/5 hover:text-media-300">Get the App</a>
-          <a href="mailto:admin@snapcollectibles.com?subject=Snap%20Media%20iOS%20Beta" class="btn-primary mt-2 justify-center">iOS beta — contact us</a>
-        </div>
-      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="bars" aria-hidden="true"></span>
+      </button>
     </div>
   </header>
 
-  <main id="top">
-    <!-- ========== HERO ========== -->
-    <section class="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
-      <div class="orb -left-32 top-20 h-96 w-96 bg-media-600/20"></div>
-      <div class="orb -right-20 top-40 h-80 w-80 bg-amber-500/10"></div>
-      <div class="orb bottom-0 left-1/2 h-64 w-64 -translate-x-1/2 bg-media-500/10"></div>
-      <div class="pointer-events-none absolute inset-0 grid-bg opacity-60"></div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+    <a href="#snap">Snap</a>
+    <a href="#collection">Collection</a>
+    <a href="#trades">Trades</a>
+    <a href="#faq">FAQ</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="#download">Request beta</a>
+  </nav>
 
-      <div class="relative mx-auto max-w-6xl px-5 sm:px-6">
-        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div class="text-center lg:text-left">
-            <div class="reveal mb-6 inline-flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-              <span class="inline-flex items-center gap-2 rounded-full border border-media-500/25 bg-media-500/10 px-3.5 py-1.5 text-xs font-semibold text-media-300">
-                <span class="relative flex h-2 w-2">
-                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-media-400 opacity-60"></span>
-                  <span class="relative inline-flex h-2 w-2 rounded-full bg-media-400"></span>
-                </span>
-                iOS beta
-              </span>
-              <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-muted-500">
-                Android coming soon
-              </span>
-              <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-muted-400">
-                Identify · Collect · Trade
-              </span>
-            </div>
-
-            <h1 class="reveal reveal-delay-1 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
-              Your shelf, identified
-              <span class="bg-gradient-to-r from-media-300 via-media-400 to-amber-400 bg-clip-text text-transparent"> and organized</span>
-            </h1>
-
-            <p class="reveal reveal-delay-2 mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-400 sm:text-lg lg:mx-0">
-              Snap a DVD, VHS, Blu-ray, cassette, or vinyl record, pick a category, and get AI-assisted ID with confidence-style notes.
-              Build a personal collection, flag wishlist and for-sale, and trade peer-to-peer with other media collectors — on iOS.
-            </p>
-
-            <div class="reveal reveal-delay-3 mt-8 flex flex-col items-center gap-3 sm:items-start">
-              <div class="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-                <a href="mailto:admin@snapcollectibles.com?subject=Snap%20Media%20iOS%20Beta" class="btn-primary">
-                  iOS beta — contact admin@snapcollectibles.com
-                </a>
-                <a href="#features" class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm font-semibold text-muted-300 transition hover:border-media-500/40 hover:bg-media-500/10 hover:text-media-300">
-                  Explore features
-                </a>
-              </div>
-              <p class="text-sm text-muted-500">
-                Android coming soon. Sign in with Apple. Built for DVD, VHS, Blu-ray, cassette, and vinyl collectors.
-              </p>
-            </div>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="assets/img/hero-disc.webp" alt="" width="1280" height="720" />
+      </div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">iOS + Android · In beta</p>
+          <h1 class="display">Snap<br />Media</h1>
+          <p class="hero-promise">Identify. Collect. Trade.</p>
+          <p class="hero-pitch">The pocket companion for physical media you actually own. Photograph a case, disc, J-card, or label. Get assistive ID with confidence notes. Keep a shelf. Trade peer-to-peer — not a storefront.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#download">Request beta access</a>
+            <a class="btn btn-ghost" href="#snap">See how it IDs</a>
           </div>
+          <p class="hero-micro">iOS and Android in beta · Category-first snap · Honest estimates · Your shelf stays yours</p>
+        </div>
 
-          <!-- Phone mockup -->
-          <div class="reveal reveal-delay-2 relative flex justify-center lg:justify-end">
-            <div class="absolute -inset-8 rounded-full bg-media-500/10 blur-3xl"></div>
-            <div class="phone-frame relative" aria-hidden="true">
-              <div class="phone-screen">
-                <div class="notch"></div>
-                <div class="status-bar">
-                  <span>9:41</span>
-                  <span class="flex items-center gap-1">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="3" width="3" height="7" rx="0.5"/><rect x="4" y="2" width="3" height="8" rx="0.5"/><rect x="8" y="0.5" width="3" height="9.5" rx="0.5"/><rect x="12" y="0" width="2" height="10" rx="0.5" opacity="0.4"/></svg>
-                  </span>
-                </div>
-                <div class="app-header">
-                  <span class="app-logo">Snap Media</span>
-                  <span class="rounded-full bg-media-500/15 px-2 py-0.5 text-[10px] font-semibold text-media-400">Identify</span>
-                </div>
-
-                <div class="pin-preview media-preview">
-                  <div class="media-case">
-                    <div class="case-spine"></div>
-                    <div class="case-cover">
-                      <div class="case-art"></div>
-                      <div class="case-title">THE MATRIX</div>
-                      <div class="case-format">DVD</div>
-                    </div>
-                  </div>
-                  <div class="angle-dots">
-                    <span class="angle-dot active"></span>
-                    <span class="angle-dot active"></span>
-                    <span class="angle-dot active"></span>
-                    <span class="angle-dot"></span>
-                  </div>
-                  <div class="absolute left-2.5 top-2.5 rounded-md bg-black/50 px-2 py-0.5 text-[9px] font-medium text-white/80 backdrop-blur-sm">DVD</div>
-                  <div class="shutter-ring"></div>
-                </div>
-
-                <p class="mt-3 px-4 text-[10px] font-semibold uppercase tracking-wider text-muted-500">ID results</p>
-
-                <div class="result-card top">
-                  <div class="result-rank">1</div>
-                  <div class="min-w-0 flex-1">
-                    <div class="flex items-center justify-between gap-2">
-                      <span class="truncate text-xs font-semibold text-white">The Matrix</span>
-                      <span class="text-[11px] font-bold text-media-400">93%</span>
-                    </div>
-                    <div class="text-[10px] text-muted-500">DVD · 1999</div>
-                    <div class="confidence-bar"><div class="confidence-fill" style="width:93%"></div></div>
-                  </div>
-                </div>
-                <div class="result-card">
-                  <div class="result-rank">2</div>
-                  <div class="min-w-0 flex-1">
-                    <div class="flex items-center justify-between gap-2">
-                      <span class="truncate text-xs font-semibold text-muted-300">The Matrix Reloaded</span>
-                      <span class="text-[11px] font-semibold text-muted-500">41%</span>
-                    </div>
-                    <div class="text-[10px] text-muted-500">DVD · 2003</div>
-                    <div class="confidence-bar"><div class="confidence-fill" style="width:41%;opacity:0.5"></div></div>
-                  </div>
-                </div>
-                <div class="result-card">
-                  <div class="result-rank">3</div>
-                  <div class="min-w-0 flex-1">
-                    <div class="flex items-center justify-between gap-2">
-                      <span class="truncate text-xs font-semibold text-muted-300">Matrix Revolutions</span>
-                      <span class="text-[11px] font-semibold text-muted-500">18%</span>
-                    </div>
-                    <div class="text-[10px] text-muted-500">Blu-ray · 2003</div>
-                    <div class="confidence-bar"><div class="confidence-fill" style="width:18%;opacity:0.35"></div></div>
-                  </div>
-                </div>
-
-                <div class="mt-3 flex justify-center gap-2 px-4">
-                  <span class="chip">Assistive ID</span>
-                  <span class="chip">Not auth</span>
-                </div>
-              </div>
+        <div class="hero-stage">
+          <div class="hero-phones">
+            <figure class="device device-float device-back">
+              <img src="assets/screens/Snap.webp" width="1344" height="2992" alt="Snap Media camera: pick DVD, VHS, Blu-ray, or Cassette Tape, then snap the title." />
+            </figure>
+            <figure class="device device-float device-main">
+              <img src="assets/screens/Home.webp" width="1344" height="2992" alt="Snap Media home: portfolio value, Snap and Collection actions, wishlist, for trade, and grails." />
+            </figure>
+          </div>
+          <div class="hero-chips">
+            <div class="chip chip-health">
+              <div class="label">Match</div>
+              <strong>93% · Assistive</strong>
+              <span>The Matrix · DVD · 1999</span>
+            </div>
+            <div class="chip chip-dna">
+              <div class="label">Format</div>
+              <strong class="mono">DVD</strong>
+              <span>Cover · spine · disc face</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== FEATURES ========== -->
-    <section id="features" class="relative py-20 sm:py-28">
-      <div class="mx-auto max-w-6xl px-5 sm:px-6">
-        <div class="reveal mx-auto max-w-2xl text-center">
-          <p class="text-sm font-semibold uppercase tracking-widest text-media-500">Features</p>
-          <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Built for shelves, crates, and trade piles
-          </h2>
-          <p class="mt-4 text-base text-muted-400 sm:text-lg">
-            Scan titles by category, keep a real collection with shelf view, research market comps, and trade peer-to-peer — with honest limits on what AI can claim.
-          </p>
+    <div class="strip">
+      <div class="wrap strip-row">
+        <span><b>Live</b> Snap, Collection, Trades, Backup</span>
+        <span><b>Honest</b> Assistive ID, not authentication</span>
+        <span><b>Private</b> Photos are not sold</span>
+        <span><b>Independent</b> Not a studio. Not a store.</span>
+      </div>
+    </div>
+
+    <section class="section" id="who">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Who it’s for</p>
+          <h2 class="display">Built for the shelf, not the mall.</h2>
+          <p class="lede muted">DVD stacks, VHS clamshells, vinyl crates, and tape drawers share the same collection. The format changes what the model looks for. The honesty does not.</p>
         </div>
-
-        <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <article class="feature-card reveal">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
-              </svg>
-            </div>
-            <h3 class="font-display text-lg font-bold text-white">Camera scan by category</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted-400">
-              Photograph a case, disc, or sleeve and choose a category: DVD, VHS, Blu-ray, Cassette Tape, Records, or Other (LaserDisc, MiniDisc, Betamax, and more).
-            </p>
+        <div class="audience">
+          <article>
+            <h3>DVD / Blu-ray</h3>
+            <p>Cases, spines, discs, steelbooks. Pick the format so a Matrix DVD and a Reloaded Blu-ray don’t get swapped.</p>
           </article>
-
-          <article class="feature-card reveal reveal-delay-1">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 20V10M18 20V4M6 20v-4"/>
-              </svg>
-            </div>
-            <h3 class="font-display text-lg font-bold text-white">AI-assisted media ID</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted-400">
-              Confidence-style notes help you compare candidates. Assistive only — not official studio, label, or brand authentication, and not a guarantee of a perfect match.
-            </p>
+          <article>
+            <h3>VHS hunters</h3>
+            <p>Clamshells, slipcases, labels. Edition cues and condition notes live next to the title, not in a notes app.</p>
           </article>
-
-          <article class="feature-card reveal reveal-delay-2">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-              </svg>
-            </div>
-            <h3 class="font-display text-lg font-bold text-white">Collection &amp; My Shelf</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted-400">
-              List and filter your media. Browse a shelf-style photo view. Flag wishlist or for sale. Edit notes and details yourself so your shelf stays yours.
-            </p>
+          <article>
+            <h3>Vinyl crates</h3>
+            <p>Jacket, spine, label. Discogs-style research links when you want a second look. Estimates stay estimates.</p>
           </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-              </svg>
-            </div>
-            <h3 class="font-display text-lg font-bold text-white">Peer-to-peer trades</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted-400">
-              Post offers, pick titles from inventory, browse the trade feed, open trade detail, and chat in-app. Set username and Facebook profile for trust. Trades are between users — not insured by Snap Media.
-            </p>
-          </article>
-
-          <article class="feature-card reveal reveal-delay-1">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3 class="font-display text-lg font-bold text-white">Sign in &amp; cloud backup</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted-400">
-              Sign in with Apple. While signed in, back up and restore your collection. Cloud backup requires an account — so a phone swap doesn’t lose your shelf.
-            </p>
-          </article>
-
-          <article class="feature-card reveal reveal-delay-2">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-              </svg>
-            </div>
-            <h3 class="font-display text-lg font-bold text-white">Marketplace research links</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted-400">
-              Open media-biased searches on eBay sold/active, Discogs, Mercari, and similar marketplaces for research. Values are research only — not appraisals or guaranteed prices.
-            </p>
+          <article>
+            <h3>Tape traders</h3>
+            <p>Cassettes, MiniDisc, and Other. Wishlist extras. Trade peer-to-peer when you actually want to swap.</p>
           </article>
         </div>
-
-        <p class="reveal mt-10 text-center text-sm text-muted-500">
-          Not official studio or label authentication. Values are research only. Trades are peer-to-peer between collectors.
-        </p>
       </div>
     </section>
 
-    <!-- ========== HOW IT WORKS ========== -->
-    <section id="how-it-works" class="relative border-t border-white/[0.04] bg-ink-850/50 py-20 sm:py-28">
-      <div class="orb right-0 top-1/2 h-72 w-72 -translate-y-1/2 bg-media-600/10"></div>
-      <div class="relative mx-auto max-w-6xl px-5 sm:px-6">
-        <div class="reveal mx-auto max-w-2xl text-center">
-          <p class="text-sm font-semibold uppercase tracking-widest text-media-500">How it Works</p>
-          <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Snap → Identify by category → Save → Trade
-          </h2>
-          <p class="mt-4 text-base text-muted-400 sm:text-lg">
-            Fast enough for a record-store swap or convention trade table — clear enough for a new collector’s first shelf.
-          </p>
+    <section class="section" id="pillars" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Permanent pillars</p>
+          <h2 class="display">Six things that do not ship as vapor.</h2>
         </div>
-
-        <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          <div class="reveal relative text-center md:text-left">
-            <div class="mx-auto mb-5 flex justify-center md:justify-start">
-              <div class="step-num">1</div>
-            </div>
-            <h3 class="font-display text-xl font-bold text-white">Snap</h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400 sm:text-base">
-              Open the camera and photograph your DVD, VHS, Blu-ray, cassette, or record — cover art, spine, disc face, or labels if you have them.
-            </p>
-          </div>
-
-          <div class="reveal reveal-delay-1 relative text-center md:text-left">
-            <div class="mx-auto mb-5 flex justify-center md:justify-start">
-              <div class="step-num">2</div>
-            </div>
-            <h3 class="font-display text-xl font-bold text-white">Identify by category</h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400 sm:text-base">
-              Select DVD, VHS, Blu-ray, Cassette Tape, Records, and more, then review AI-assisted results with confidence-style notes.
-            </p>
-          </div>
-
-          <div class="reveal reveal-delay-2 relative text-center md:text-left">
-            <div class="mx-auto mb-5 flex justify-center md:justify-start">
-              <div class="step-num">3</div>
-            </div>
-            <h3 class="font-display text-xl font-bold text-white">Save</h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400 sm:text-base">
-              Add it to your collection. Flag wishlist or for sale. See it in list view or on My Shelf.
-            </p>
-          </div>
-
-          <div class="reveal reveal-delay-3 text-center md:text-left">
-            <div class="mx-auto mb-5 flex justify-center md:justify-start">
-              <div class="step-num">4</div>
-            </div>
-            <h3 class="font-display text-xl font-bold text-white">Trade</h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400 sm:text-base">
-              Post an offer from inventory, swipe right to pre-fill a trade, browse the feed, and chat in-app.
-            </p>
-          </div>
+        <div class="pillar-grid">
+          <article class="pillar">
+            <div class="num">01</div>
+            <h3>Camera snap</h3>
+            <p>Cover, spine, disc, J-card, or vinyl label. Camera, gallery, or barcode. Manual add if you already know it.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">02</div>
+            <h3>Category first</h3>
+            <p>DVD, VHS, Blu-ray, Cassette Tape, Records, Other. The model looks at the right features.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">03</div>
+            <h3>Assistive ID</h3>
+            <p>Ranked candidates with confidence notes. Not studio authentication. Not a guarantee.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">04</div>
+            <h3>The shelf</h3>
+            <p>Owned, wishlist, for sale. List view and a shelf-style photo view for the titles you actually own.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">05</div>
+            <h3>Peer trades</h3>
+            <p>Post extras, browse the feed, chat in-app. Trades are between collectors — not insured here.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">06</div>
+            <h3>Export &amp; backup</h3>
+            <p>File export, optional cloud while signed in. Betas can wipe local data — back up after you scan.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ========== CATEGORIES ========== -->
-    <section id="categories" class="relative border-y border-media-500/15 bg-gradient-to-r from-transparent via-media-500/[0.05] to-transparent py-12 sm:py-14">
-      <div class="mx-auto max-w-6xl px-5 sm:px-6">
-        <p class="reveal text-center text-sm font-semibold uppercase tracking-widest text-muted-500">Scan categories</p>
-        <div class="reveal reveal-delay-1 mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          <span class="category-chip">DVD</span>
-          <span class="category-chip">VHS</span>
-          <span class="category-chip">Blu-ray</span>
-          <span class="category-chip">Cassette Tape</span>
-          <span class="category-chip">Records</span>
-          <span class="category-chip">Other</span>
-          <span class="category-chip">LaserDisc</span>
-          <span class="category-chip">4K UHD</span>
-          <span class="category-chip">Steelbook</span>
-          <span class="category-chip">MiniDisc</span>
-          <span class="category-chip">Betamax</span>
+    <section class="section" id="snap">
+      <div class="wrap split">
+        <div>
+          <p class="kicker">Snap <span class="badge badge-live">Live</span></p>
+          <h2 class="display">Pick a format. Then snap the title.</h2>
+          <p class="lede">Camera or gallery. Barcode when the case still has a UPC. Manual add if you skip AI.</p>
+          <p class="muted">Category first so the model hunts cover art, studio, year, and edition instead of treating every rectangle like a DVD. Good light and a filled frame still win.</p>
+          <ul class="feature-list">
+            <li>DVD, VHS, Blu-ray, Cassette Tape, Records, Other — LaserDisc, MiniDisc, Betamax, 4K, steelbook.</li>
+            <li>Camera or photo library. Scan a barcode when the case still has a readable UPC.</li>
+            <li>Review assistive results with confidence-style notes before you save.</li>
+            <li>Add by hand if you do not want a photo in the loop.</li>
+            <li>Photos are resized for identification. They are not sold.</li>
+          </ul>
+        </div>
+        <div class="device-pair">
+          <figure class="device">
+            <img src="assets/screens/Snap.webp" width="1344" height="2992" alt="Android Snap tab with format chips and Camera, Gallery, Scan barcode actions." />
+          </figure>
+          <figure class="device">
+            <img src="assets/screens/GetStarted.webp" width="1344" height="2992" alt="Get started: Sign in with Google, optional trade username, or continue as guest." />
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- ========== COLLECTION / TRADES ========== -->
-    <section id="collection" class="relative py-20 sm:py-28">
-      <div class="orb -left-20 top-1/3 h-80 w-80 bg-media-700/10"></div>
-      <div class="relative mx-auto max-w-6xl px-5 sm:px-6">
-        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div class="reveal">
-            <p class="text-sm font-semibold uppercase tracking-widest text-media-500">Collection &amp; Trades</p>
-            <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Catalog it. Shelf it. Trade it.
-            </h2>
-            <p class="mt-4 text-base leading-relaxed text-muted-400 sm:text-lg">
-              Snap Media is more than an identifier — it’s a personal catalog for physical media with wishlist and for-sale flags, swipe shortcuts, and optional peer-to-peer trading.
-            </p>
+    <section class="section" id="identify" style="padding-top:0;">
+      <div class="wrap split reverse">
+        <div>
+          <p class="kicker">Identify <span class="badge badge-live">Live</span></p>
+          <h2 class="display">Title, year, format — then a shortlist.</h2>
+          <p class="lede">Assistive candidates with confidence notes. Research links when you want a second source.</p>
+          <p class="muted">Free includes a photo-ID allotment. You confirm or edit the title before it hits the shelf. Hard covers can go to a stronger model. Easy ones stay cheap.</p>
+          <ul class="feature-list">
+            <li>Reads cover art, spine text, studio or label, year, and edition cues.</li>
+            <li>Catalog hit first when the title is already known. API only if needed.</li>
+            <li>Confidence-style notes on candidates. Low score is labeled, not hidden.</li>
+            <li>Lookups: eBay sold/active, Discogs, Mercari — format-aware.</li>
+            <li>Estimates only. Not studio authentication. Not an appraisal.</li>
+          </ul>
+        </div>
+        <figure class="device device-solo">
+          <img src="assets/screens/Disclaimer.webp" width="1344" height="2992" alt="Before you start: independent collector app, photos not sold, values are estimates." />
+        </figure>
+      </div>
+    </section>
 
-            <ul class="mt-8 space-y-4">
-              <li class="flex gap-3">
-                <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-media-500/15 text-media-400">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
-                <div>
-                  <span class="font-semibold text-white">List + shelf-style photo view</span>
-                  <p class="text-sm text-muted-400">See your shelf at a glance. Filter collection, wishlist, and for-sale titles the way collectors actually sort crates and shelves.</p>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-media-500/15 text-media-400">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
-                <div>
-                  <span class="font-semibold text-white">Swipe shortcuts</span>
-                  <p class="text-sm text-muted-400">Swipe left to delete. Swipe right to start a trade with the title pre-filled — less typing between offers.</p>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-media-500/15 text-media-400">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
-                <div>
-                  <span class="font-semibold text-white">Trade contact setup</span>
-                  <p class="text-sm text-muted-400">Username and optional Facebook helpers so other traders know how to reach you. Chat stays in-app when you’re working an offer.</p>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-media-500/15 text-media-400">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
-                <div>
-                  <span class="font-semibold text-white">Backup while signed in</span>
-                  <p class="text-sm text-muted-400">Cloud backup and restore for your collection when you’re signed in with Apple — keep your catalog if you change devices.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
+    <section class="ember-band">
+      <div class="wrap">
+        <p class="kicker">Honesty for the shelf</p>
+        <h2 class="display">A high confidence is still not a studio stamp.</h2>
+        <p class="lede" style="max-width: 46ch;">The app says that out loud. Marketplace links are research. Trades are peer-to-peer. Snap Media does not authenticate, appraise, or insure a swap.</p>
+      </div>
+    </section>
 
-                    <div class="reveal reveal-delay-2 grid gap-4 sm:grid-cols-2">
-            <div class="journal-card">
-              <div class="pin-thumb" style="background: radial-gradient(ellipse at 45% 40%, #22d3ee44, transparent 50%), linear-gradient(160deg, #0c4a6e, #070b12);">
-                <div class="thumb-dvd"></div>
-              </div>
-              <div class="p-4">
-                <div class="flex items-start justify-between gap-2">
-                  <h4 class="font-semibold text-white">The Matrix</h4>
-                  <span class="rounded-full bg-media-500/15 px-2 py-0.5 text-[10px] font-semibold text-media-300">Collection</span>
-                </div>
-                <p class="mt-1 text-xs text-muted-500">DVD · 1999</p>
-                <p class="mt-2 line-clamp-2 text-xs text-muted-400">Keep case with green code art. Clean disc, no scratches noted.</p>
-              </div>
+    <section class="section" id="collection">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Collection <span class="badge badge-live">Live</span></p>
+          <h2 class="display">Owned, wishlist, for sale. One shelf.</h2>
+          <p class="lede muted">Search, filter by format, track paid vs estimated. Empty states push you to snap a real title, not browse a store.</p>
+        </div>
+        <div class="tool-grid">
+          <article class="tool">
+            <h3>Home</h3>
+            <p class="muted">Portfolio value, items, streak. Snap and Collection one tap away. Wishlist, for trade, grails.</p>
+            <div class="spec-row">
+              <span class="spec">Paid vs value</span>
+              <span class="spec">Streak</span>
             </div>
-            <div class="journal-card">
-              <div class="pin-thumb" style="background: radial-gradient(ellipse at 50% 45%, #fbbf2444, transparent 50%), linear-gradient(160deg, #422006, #070b12);">
-                <div class="thumb-vhs"></div>
-              </div>
-              <div class="p-4">
-                <div class="flex items-start justify-between gap-2">
-                  <h4 class="font-semibold text-white">The Lion King (VHS)</h4>
-                  <span class="rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-semibold text-amber-300">For sale</span>
-                </div>
-                <p class="mt-1 text-xs text-muted-500">VHS · Disney clamshell</p>
-                <p class="mt-2 line-clamp-2 text-xs text-muted-400">Black Diamond era variant. Open to trades or cash. Research links on detail.</p>
-              </div>
+          </article>
+          <article class="tool">
+            <h3>Shelf</h3>
+            <p class="muted">Owned and wishlist. Filter DVD through Records. Search the titles you already logged.</p>
+            <div class="spec-row">
+              <span class="spec">Owned</span>
+              <span class="spec">Wishlist</span>
             </div>
-            <div class="journal-card">
-              <div class="pin-thumb" style="background: radial-gradient(ellipse at 40% 50%, #60a5fa55, transparent 50%), linear-gradient(160deg, #1e3a8a, #070b12);">
-                <div class="thumb-vinyl"></div>
-              </div>
-              <div class="p-4">
-                <div class="flex items-start justify-between gap-2">
-                  <h4 class="font-semibold text-white">Abbey Road (LP)</h4>
-                  <span class="rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-semibold text-muted-300">Wishlist</span>
-                </div>
-                <p class="mt-1 text-xs text-muted-500">Records · Vinyl LP</p>
-                <p class="mt-2 line-clamp-2 text-xs text-muted-400">Looking for VG+ with original sleeve. Will trade duplicate Blu-rays.</p>
-              </div>
+          </article>
+          <article class="tool">
+            <h3>Detail</h3>
+            <p class="muted">Condition, edition cues, studio or label, year, notes. Edit so the shelf stays yours.</p>
+            <div class="spec-row">
+              <span class="spec">Notes</span>
+              <span class="spec">Edition</span>
             </div>
-            <div class="journal-card">
-              <div class="pin-thumb" style="background: radial-gradient(ellipse at 55% 40%, #a78bfa55, transparent 50%), linear-gradient(160deg, #2e1065, #070b12);">
-                <div class="thumb-cassette"></div>
-              </div>
-              <div class="p-4">
-                <div class="flex items-start justify-between gap-2">
-                  <h4 class="font-semibold text-white">Mixtape · 90s hits</h4>
-                  <span class="rounded-full bg-media-500/15 px-2 py-0.5 text-[10px] font-semibold text-media-300">Trade open</span>
-                </div>
-                <p class="mt-1 text-xs text-muted-500">Cassette Tape · Custom</p>
-                <p class="mt-2 line-clamp-2 text-xs text-muted-400">Swipe right to pre-fill offer. Chat when interest hits.</p>
-              </div>
+          </article>
+          <article class="tool">
+            <h3>Backup</h3>
+            <p class="muted">Export, import, optional cloud while signed in. Betas can wipe local data — back up after you scan.</p>
+            <div class="spec-row">
+              <span class="spec">Export</span>
+              <span class="spec">Cloud optional</span>
             </div>
-          </div>
+          </article>
+        </div>
+        <div class="device-row" style="margin-top: 36px;">
+          <figure class="device">
+            <img src="assets/screens/Home.webp" width="1344" height="2992" alt="Home dashboard with portfolio value and Snap / Collection actions." />
+            <figcaption>Home</figcaption>
+          </figure>
+          <figure class="device">
+            <img src="assets/screens/Collection.webp" width="1344" height="2992" alt="Collection tab with Owned, Wishlist, and format filters." />
+            <figcaption>Collection</figcaption>
+          </figure>
+          <figure class="device">
+            <img src="assets/screens/Snap.webp" width="1344" height="2992" alt="Snap tab: pick a format, then Camera, Gallery, or Scan barcode." />
+            <figcaption>Snap</figcaption>
+          </figure>
+          <figure class="device">
+            <img src="assets/screens/Settings.webp" width="1344" height="2992" alt="Settings: Google sign-in, trade username, export, import, and cloud backup." />
+            <figcaption>Settings</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    
+    <section class="section" id="trades">
+      <div class="wrap split">
+        <div>
+          <p class="kicker">Trades <span class="badge badge-live">Live</span></p>
+          <h2 class="display">Peer-to-peer. Not a store. Not insured.</h2>
+          <p class="lede">Post extras from inventory. Browse the feed. Chat in-app. Arrange the physical swap yourself.</p>
+          <p class="muted">Set a username so other collectors know who you are. Optional contact helpers if you want them. Snap Media does not escrow items or money.</p>
+          <ul class="feature-list">
+            <li>Post an offer from titles you already logged.</li>
+            <li>Swipe shortcuts: left to delete, right to pre-fill a trade.</li>
+            <li>Trade feed, trade detail, and in-app chat.</li>
+            <li>Friends and optional contact details you choose to share.</li>
+            <li>Collector events as typed locations — not GPS tracking.</li>
+          </ul>
+        </div>
+        <figure class="device device-solo">
+          <img src="assets/screens/Settings.webp" width="1344" height="2992" alt="Settings with trade username, Google sign-in, and backup controls." />
+        </figure>
+      </div>
+    </section>
 
-    <!-- ========== TRUST STRIP ========== -->
-    <section class="trust-strip py-8 sm:py-10" aria-label="Disclaimer">
-      <div class="mx-auto max-w-3xl px-5 text-center sm:px-6">
-        <div class="reveal flex flex-col items-center gap-3 sm:flex-row sm:gap-4 sm:text-left">
-          <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-media-500/25 bg-media-500/10 text-media-400">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
-            </svg>
-          </span>
-          <p class="text-sm leading-relaxed text-muted-400 sm:text-[15px]">
-            <strong class="font-semibold text-muted-300">Honest by design:</strong>
-            AI media ID is assistive — not official studio, label, or brand authentication.
-            Marketplace links are for research only. Trades are peer-to-peer between users; Snap Media does not insure them.
-          </p>
+    <section class="section" id="how" style="padding-top:0;">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">How it works</p>
+          <h2 class="display">Snap. Rank. Save. Trade.</h2>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Capture the title</h3>
+            <p>Pick the format. Photograph the cover, spine, disc, J-card, or label. Or scan a barcode. Or add it by hand.</p>
+          </article>
+          <article class="step">
+            <h3>Review the shortlist</h3>
+            <p>Assistive matches with confidence notes, year, and format. Open marketplace research if you want a second look.</p>
+          </article>
+          <article class="step">
+            <h3>Save to the shelf</h3>
+            <p>Condition, paid, notes, photo. Wishlist if it isn’t yours yet. Export after you scan so a beta never eats the crate.</p>
+          </article>
+          <article class="step">
+            <h3>Trade if you want</h3>
+            <p>Post extras, browse the feed, chat. Trades stay between collectors. The shelf stays local unless you sync or share.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ========== FAQ ========== -->
-    <section id="faq" class="relative border-t border-white/[0.04] bg-ink-850/50 py-20 sm:py-28">
-      <div class="relative mx-auto max-w-3xl px-5 sm:px-6">
-        <div class="reveal mx-auto max-w-2xl text-center">
-          <p class="text-sm font-semibold uppercase tracking-widest text-media-500">FAQ</p>
-          <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Straight answers for media collectors
-          </h2>
-          <p class="mt-4 text-base text-muted-400 sm:text-lg">
-            What Snap Media does — and what it doesn’t claim.
-          </p>
+    <section class="section" id="privacy">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Ownership</p>
+          <h2 class="display">You own the shelf. That is a design constraint.</h2>
+          <p class="lede muted">Independent collector app. Not a studio. Not a store. Not a grading service.</p>
         </div>
-
-        <div class="mt-12 space-y-4">
-          <details class="reveal group rounded-2xl border border-white/[0.06] bg-ink-900/60 px-5 py-4 open:border-media-500/20">
-            <summary class="cursor-pointer list-none font-display text-base font-bold text-white marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
-              Do I need Sign in with Apple?
-              <span class="text-media-400/80 transition group-open:rotate-45 text-xl leading-none">+</span>
-            </summary>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400">
-              Sign in with Apple unlocks account features. Cloud backup and restore of your collection require you to be signed in. Local collecting works without an account; backup needs sign-in.
-            </p>
-          </details>
-
-          <details class="reveal reveal-delay-1 group rounded-2xl border border-white/[0.06] bg-ink-900/60 px-5 py-4 open:border-media-500/20">
-            <summary class="cursor-pointer list-none font-display text-base font-bold text-white marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
-              Why pick a category when I scan?
-              <span class="text-media-400/80 transition group-open:rotate-45 text-xl leading-none">+</span>
-            </summary>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400">
-              Categories (DVD, VHS, Blu-ray, Cassette Tape, Records, Other) help focus identification. Choosing the right format often improves useful results — use Other for LaserDisc, MiniDisc, Betamax, and similar.
-            </p>
-          </details>
-
-          <details class="reveal reveal-delay-2 group rounded-2xl border border-white/[0.06] bg-ink-900/60 px-5 py-4 open:border-media-500/20">
-            <summary class="cursor-pointer list-none font-display text-base font-bold text-white marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
-              Is this official studio or label authentication?
-              <span class="text-media-400/80 transition group-open:rotate-45 text-xl leading-none">+</span>
-            </summary>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400">
-              No. Snap Media offers AI-assisted identification for personal collecting and trading research. It is not official studio or label authentication, appraisal, or a guarantee of authenticity or value.
-            </p>
-          </details>
-
-          <details class="reveal group rounded-2xl border border-white/[0.06] bg-ink-900/60 px-5 py-4 open:border-media-500/20">
-            <summary class="cursor-pointer list-none font-display text-base font-bold text-white marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
-              How do trades work?
-              <span class="text-media-400/80 transition group-open:rotate-45 text-xl leading-none">+</span>
-            </summary>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400">
-              Trades are peer-to-peer between users. You can post offers, pick a title from inventory, browse the trade feed, open trade detail, and chat in-app. Set up contact info (username and Facebook profile for trust). Snap Media does not insure or guarantee trades.
-            </p>
-          </details>
-
-          <details class="reveal reveal-delay-1 group rounded-2xl border border-white/[0.06] bg-ink-900/60 px-5 py-4 open:border-media-500/20">
-            <summary class="cursor-pointer list-none font-display text-base font-bold text-white marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
-              Does cloud backup need sign-in?
-              <span class="text-media-400/80 transition group-open:rotate-45 text-xl leading-none">+</span>
-            </summary>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400">
-              Yes. Backup and restore of your collection while signed in is available in the app. Stay signed in with Apple to use cloud backup.
-            </p>
-          </details>
-
-          <details class="reveal reveal-delay-2 group rounded-2xl border border-white/[0.06] bg-ink-900/60 px-5 py-4 open:border-media-500/20">
-            <summary class="cursor-pointer list-none font-display text-base font-bold text-white marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
-              What is the camera used for?
-              <span class="text-media-400/80 transition group-open:rotate-45 text-xl leading-none">+</span>
-            </summary>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400">
-              The camera is for photographing media — covers, spines, discs, tapes, and sleeves — for identification and your collection. Photos support ID and cataloging, not unrelated uses.
-            </p>
-          </details>
-
-          <details class="reveal group rounded-2xl border border-white/[0.06] bg-ink-900/60 px-5 py-4 open:border-media-500/20">
-            <summary class="cursor-pointer list-none font-display text-base font-bold text-white marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
-              How do I join the iOS beta?
-              <span class="text-media-400/80 transition group-open:rotate-45 text-xl leading-none">+</span>
-            </summary>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400">
-              Snap Media for iOS is in beta. Email
-              <a href="mailto:admin@snapcollectibles.com?subject=Snap%20Media%20iOS%20Beta" class="font-medium text-media-400 hover:text-media-300">admin@snapcollectibles.com</a>
-              for beta access or support. There is no full public App Store launch claimed on this site until a live link is provided.
-            </p>
-          </details>
-
-          <details class="reveal reveal-delay-1 group rounded-2xl border border-white/[0.06] bg-ink-900/60 px-5 py-4 open:border-media-500/20">
-            <summary class="cursor-pointer list-none font-display text-base font-bold text-white marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
-              Is Android available?
-              <span class="text-media-400/80 transition group-open:rotate-45 text-xl leading-none">+</span>
-            </summary>
-            <p class="mt-3 text-sm leading-relaxed text-muted-400">
-              Android is coming soon. Reach out at admin@snapcollectibles.com if you want to be notified when Android testing opens.
-            </p>
-          </details>
+        <div class="pillar-grid">
+          <article class="pillar">
+            <div class="num">Photos</div>
+            <h3>ID, then silence</h3>
+            <p>A resized photo may go to the identification provider so the app can suggest a title. Photos are not sold. Manual add never sends a photo.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">Estimates</div>
+            <h3>Not a slab</h3>
+            <p>Identifications and value ranges are estimates only — not appraisals, studio authentication, or guaranteed matches.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">Backup</div>
+            <h3>Export first</h3>
+            <p>Betas can wipe local data. Export or optional cloud sync after you scan. The shelf should survive the next build.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">Trades</div>
+            <h3>Between you</h3>
+            <p>Peer-to-peer. No escrow. No insurance. Username and optional contact are information you choose to share.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">Age</div>
+            <h3>Not for under 13</h3>
+            <p>Not directed at children under 13. Sign-in is Apple on iOS, Google on Android, or continue as guest.</p>
+          </article>
+          <article class="pillar">
+            <div class="num">Site</div>
+            <h3>Three fields</h3>
+            <p>This site is static. The beta form sends App name, phone OS, and email. No analytics SDK is bundled.</p>
+          </article>
         </div>
+        <p style="margin-top:24px;"><a href="privacy.html">Read the full privacy page →</a></p>
       </div>
     </section>
 
-    <!-- ========== PRIVACY ========== -->
-    <section id="privacy" class="relative py-16 sm:py-20">
-      <div class="mx-auto max-w-3xl px-5 sm:px-6">
-        <div class="reveal rounded-2xl border border-white/[0.06] bg-ink-900/50 p-6 sm:p-8">
-          <p class="text-sm font-semibold uppercase tracking-widest text-media-500">Privacy</p>
-          <h2 class="mt-2 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            Privacy-minded by default
-          </h2>
-          <p class="mt-4 text-sm leading-relaxed text-muted-400 sm:text-base">
-            Camera and photos are used for media identification and your personal collection.
-            Trade contact details (such as username or optional Facebook helpers) are information you choose to provide so other traders can reach you.
-            Sign in with Apple when you want account features like cloud backup.
-          </p>
-          <ul class="mt-5 space-y-2 text-sm text-muted-400">
-            <li class="flex gap-2"><span class="text-media-400">·</span> Media photos for ID and collection only</li>
-            <li class="flex gap-2"><span class="text-media-400">·</span> Optional trade contact info is user-provided</li>
-            <li class="flex gap-2"><span class="text-media-400">·</span> Cloud backup requires Sign in with Apple</li>
+    <section class="section" id="not" style="padding-top:0;">
+      <div class="wrap split">
+        <div>
+          <p class="kicker">What this is</p>
+          <h2 class="display">A collector tool. Labeled as such.</h2>
+          <p class="muted">Identify, catalog, export, optionally trade. Free includes a photo-ID allotment, your collection, and catalog browse. Optional Pro is an auto-renewing store subscription on each platform.</p>
+        </div>
+        <div>
+          <p class="kicker" style="margin-top:8px;">What this is not</p>
+          <ul class="not-list">
+            <li>Not a studio or label app.</li>
+            <li>Not a store.</li>
+            <li>Not official authentication.</li>
+            <li>Not an appraisal.</li>
+            <li>Not “AI that shops for you.”</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ========== GET THE APP / SOFT CTA ========== -->
-    <section id="get-app" class="relative overflow-hidden py-20 sm:py-28">
-      <div class="orb left-1/2 top-0 h-96 w-96 -translate-x-1/2 bg-media-500/15"></div>
-      <div class="pointer-events-none absolute inset-0 grid-bg opacity-40"></div>
-
-      <div class="relative mx-auto max-w-3xl px-5 text-center sm:px-6">
-        <div class="reveal">
-          <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-media-500/30 bg-gradient-to-br from-media-500/20 to-amber-500/10 shadow-glow">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <circle cx="16" cy="15" r="10" stroke="#60a5fa" stroke-width="1.75" fill="rgba(59,130,246,0.12)"/>
-              <circle cx="16" cy="15" r="5" stroke="#93c5fd" stroke-width="1.25" opacity="0.8"/>
-              <rect x="13" y="25" width="6" height="4" rx="1" fill="#f59e0b" opacity="0.9"/>
-            </svg>
-          </div>
-
-          <div class="mx-auto mb-4 flex flex-wrap items-center justify-center gap-2">
-            <span class="inline-flex items-center gap-2 rounded-full border border-media-500/20 bg-media-500/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-media-300">
-              iOS beta
-            </span>
-            <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-500">
-              Android coming soon
-            </span>
-          </div>
-
-          <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Join the Snap Media iOS beta
-          </h2>
-          <p class="mx-auto mt-4 max-w-xl text-base text-muted-400 sm:text-lg">
-            The iOS app is in beta — not a full public App Store launch yet. Want access or support? Email us. Android is coming soon.
-          </p>
+    <section class="section" id="faq">
+      <div class="wrap wrap-narrow">
+        <div class="section-head">
+          <p class="kicker">FAQ</p>
+          <h2 class="display">Straight answers for collectors.</h2>
+          <p class="lede muted">What Snap Media does — and what it does not claim.</p>
         </div>
+        <div class="faq-list">
+          <div class="faq-item is-open">
+            <button type="button" aria-expanded="true">How does Android testing work?<span class="plus" aria-hidden="true">+</span></button>
+            <div class="faq-a">
+              Google Play does not auto-email testers. After you submit an Android request, this page shows the internal test URL. Copy and keep it. The URL is
+              <span class="mono">https://play.google.com/apps/internaltest/4700993420542853350</span>
+              — it becomes active once your email is added to the tester list. Please allow up to a few hours.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">How do I join the iOS beta?<span class="plus" aria-hidden="true">+</span></button>
+            <div class="faq-a">Request a tester slot on this page. Pick iOS and leave your email. We follow up with next steps. Same three fields: App name, phone OS, email.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">Is this official studio or label authentication?<span class="plus" aria-hidden="true">+</span></button>
+            <div class="faq-a">No. Snap Media offers AI-assisted identification for personal collecting and trading research. It is not official studio or label authentication, appraisal, or a guarantee of authenticity or value.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">Why pick a category when I scan?<span class="plus" aria-hidden="true">+</span></button>
+            <div class="faq-a">Categories (DVD, VHS, Blu-ray, Cassette Tape, Records, Other) help focus identification. Choosing the right format often improves useful results — use Other for LaserDisc, MiniDisc, Betamax, and similar.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">How do trades work?<span class="plus" aria-hidden="true">+</span></button>
+            <div class="faq-a">Trades are peer-to-peer between users. Post offers, pick a title from inventory, browse the trade feed, open trade detail, and chat in-app. Snap Media does not insure or guarantee trades.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">Do I need to sign in?<span class="plus" aria-hidden="true">+</span></button>
+            <div class="faq-a">You can scan and organize locally. Cloud backup, restore, and account features need Sign in with Apple on iOS or Google on Android.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">What is the camera used for?<span class="plus" aria-hidden="true">+</span></button>
+            <div class="faq-a">Photographing media — covers, spines, discs, tapes, and sleeves — for identification and your collection. A resized photo may be sent to the identification provider so the app can suggest a title. Photos are not sold.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="reveal reveal-delay-1 mt-8 flex flex-col items-center gap-4">
-          <a href="mailto:admin@snapcollectibles.com?subject=Snap%20Media%20iOS%20Beta" class="btn-primary btn-primary-lg">
-            iOS beta — contact admin@snapcollectibles.com
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-          </a>
+    <section class="section" id="download">
+      <div class="wrap">
+        <div class="cta-panel">
+          <p class="kicker">Beta</p>
+          <h2 class="display">iOS and Android. Both in beta.</h2>
+          <p class="lede muted" style="max-width:44ch;">Snap Media is in closed beta on iPhone / iPad and on Android. Request a tester slot. We get App name, phone OS, and your email — nothing else.</p>
+          <div class="btn-row" style="margin-top:8px;">
+            <span class="store-btn" aria-disabled="true">
+              <small>In beta</small>
+              <b>iOS</b>
+            </span>
+            <span class="store-btn" aria-disabled="true">
+              <small>In beta</small>
+              <b>Android</b>
+            </span>
+          </div>
+          <form class="form" id="beta-form" novalidate>
+            <input type="hidden" name="_subject" value="Snap Media beta tester request" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-medium text-muted-500">
-            Android coming soon
-          </p>
+            <label for="app-name">App name</label>
+            <input id="app-name" name="App Name" type="text" value="Snap Media" readonly />
 
-          <p class="max-w-md text-sm leading-relaxed text-muted-500">
-            Write
-            <a href="mailto:admin@snapcollectibles.com?subject=Snap%20Media%20iOS%20Beta" class="font-medium text-media-400 transition hover:text-media-300">admin@snapcollectibles.com</a>
-            with your name and a short note. App Store and Play links will appear here when available.
-          </p>
+            <fieldset class="os-fieldset">
+              <legend>Phone OS</legend>
+              <div class="os-choice">
+                <label class="os-card">
+                  <input type="radio" name="Phone OS" value="iOS" required />
+                  <span class="os-card-title">iOS</span>
+                  <span class="os-card-meta">iPhone + iPad</span>
+                </label>
+                <label class="os-card">
+                  <input type="radio" name="Phone OS" value="Android" />
+                  <span class="os-card-title">Android</span>
+                  <span class="os-card-meta">Phone + tablet</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <p class="android-note" id="android-note" hidden>
+              After you submit an Android request we show the Play test URL on this page. Google does not email testers automatically — you have to keep that URL.
+            </p>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@shelf.local" required />
+
+            <button class="btn btn-primary" type="submit">Request to be a beta tester</button>
+            <p class="form-note">Sends App name, phone OS, and email to <span class="mono">admin@snapcollectibles.com</span>. No newsletter.</p>
+            <p class="form-status" id="beta-status" role="status"></p>
+          </form>
+
+          <p class="form-status" id="ios-done" hidden role="status"></p>
+
+          <div id="android-gate" hidden>
+            <p class="gate-kicker">Android tester link</p>
+            <h3 class="gate-title">Copy this URL. Then confirm you kept it.</h3>
+            <p class="gate-copy">
+              Request received for <span class="mono" data-gate-email></span>.
+              This URL will be active once your email has been added to the tester list.
+              Please allow up to a few hours. Google Play does not automatically send emails to testers.
+            </p>
+            <div class="url-box">
+              <code id="play-url">https://play.google.com/apps/internaltest/4700993420542853350</code>
+              <div class="url-actions">
+                <button class="btn-copy" type="button" id="copy-url">Copy URL</button>
+                <a class="btn-copy" href="https://play.google.com/apps/internaltest/4700993420542853350" target="_blank" rel="noopener noreferrer">Open in Play</a>
+              </div>
+              <p class="form-note" id="copy-status" role="status"></p>
+            </div>
+            <div class="ack-row">
+              <input id="ack-copied" type="checkbox" />
+              <label for="ack-copied">I have copied / saved this URL. I understand it stays inactive until my email is on the tester list — that can take a few hours.</label>
+            </div>
+            <button class="btn btn-primary" type="button" id="ack-btn" disabled>I have kept this URL</button>
+            <p class="form-status" id="ack-confirmed" hidden data-state="ok">Acknowledged. Keep the URL. We will add <span data-gate-email></span> to the Android tester list.</p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="border-t border-white/[0.05] bg-ink-950 py-12">
-    <div class="mx-auto max-w-6xl px-5 sm:px-6">
-      <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-        <div class="text-center sm:text-left">
-          <a href="#top" class="font-display text-lg font-bold text-media-400">Snap Media</a>
-          <p class="mt-1 text-sm text-muted-500">Identify. Collect. Trade.</p>
-        </div>
-        <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-400">
-          <a href="#features" class="transition hover:text-media-400">Features</a>
-          <a href="#how-it-works" class="transition hover:text-media-400">How it Works</a>
-          <a href="#collection" class="transition hover:text-media-400">Collection</a>
-          <a href="#faq" class="transition hover:text-media-400">FAQ</a>
-          <a href="#privacy" class="transition hover:text-media-400">Privacy</a>
-          <a href="#get-app" class="transition hover:text-media-400">Get the App</a>
-        </nav>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <img src="assets/img/mark.svg" width="28" height="28" alt="" />
+          <span class="brand-name">Snap Media</span>
+        </a>
+        <p>Identify physical media. Keep the shelf. Independent, on purpose.</p>
       </div>
-      <div class="mt-8 border-t border-white/[0.04] pt-8 text-center text-xs text-muted-500">
-        <p class="font-medium text-muted-400">iOS beta · Android coming soon · <a href="mailto:admin@snapcollectibles.com" class="text-media-400 hover:text-media-300">admin@snapcollectibles.com</a></p>
-        <p class="mt-3">&copy; 2026 Snap Media. All rights reserved.</p>
-        <p class="mt-2 max-w-lg mx-auto">
-          AI identifications are assistive for personal collecting — not official studio or label authentication or guaranteed matches. Marketplace research is reference only. Trades are peer-to-peer between users.
-        </p>
+      <div class="footer-col">
+        <h2>Product</h2>
+        <a href="#snap">Snap</a>
+        <a href="#collection">Collection</a>
+        <a href="#trades">Trades</a>
+        <a href="#faq">FAQ</a>
       </div>
+      <div class="footer-col">
+        <h2>Trust</h2>
+        <a href="privacy.html">Privacy</a>
+        <a href="#privacy">Ownership</a>
+        <a href="#not">What this is not</a>
+      </div>
+      <div class="footer-col">
+        <h2>Get it</h2>
+        <a href="#download">Request beta</a>
+        <span class="muted">iOS + Android beta</span>
+      </div>
+    </div>
+    <div class="wrap footer-legal">
+      <span>© <span data-year></span> Snap Media. All rights reserved.</span>
+      <span>Independent collector app · Estimates only · iOS + Android beta</span>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      'use strict';
+  <svg width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="ember" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFD600" />
+        <stop offset="0.55" stop-color="#FF6A00" />
+        <stop offset="1" stop-color="#FF2D2D" />
+      </linearGradient>
+    </defs>
+  </svg>
 
-      var menuToggle = document.getElementById('menu-toggle');
-      var mobileMenu = document.getElementById('mobile-menu');
-      var iconOpen = document.getElementById('menu-icon-open');
-      var iconClose = document.getElementById('menu-icon-close');
-
-      if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function () {
-          var open = mobileMenu.classList.toggle('open');
-          iconOpen.classList.toggle('hidden', open);
-          iconClose.classList.toggle('hidden', !open);
-          menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-
-        document.querySelectorAll('.mobile-nav-link, #mobile-menu .btn-primary').forEach(function (link) {
-          link.addEventListener('click', function () {
-            mobileMenu.classList.remove('open');
-            iconOpen.classList.remove('hidden');
-            iconClose.classList.add('hidden');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-
-      var navbar = document.getElementById('navbar');
-      function onScroll() {
-        if (window.scrollY > 20) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-
-      var revealEls = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                io.unobserve(entry.target);
-              }
-            });
-          },
-          { rootMargin: '0px 0px -40px 0px', threshold: 0.08 }
-        );
-        revealEls.forEach(function (el) { io.observe(el); });
-      } else {
-        revealEls.forEach(function (el) { el.classList.add('visible'); });
-      }
-
-      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-        anchor.addEventListener('click', function (e) {
-          var id = anchor.getAttribute('href');
-          if (id === '#' || id === '#top') {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-          }
-          var target = document.querySelector(id);
-          if (target) {
-            e.preventDefault();
-            var top = target.getBoundingClientRect().top + window.scrollY - 88;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-          }
-        });
-      });
-    })();
-  </script>
+  <script src="assets/js/site.js"></script>
 </body>
 </html>
