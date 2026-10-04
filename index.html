@@ -3,31 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Snap Media — Identify, collect &amp; trade physical media</title>
-  <meta name="description" content="Photograph DVDs, VHS, Blu-ray, cassettes, and vinyl. AI-assisted ID, a personal shelf, and peer-to-peer trades. Independent collector app. iOS and Android beta." />
-  <meta name="theme-color" content="#050505" />
+  <title>Snap Media — Physical Media Collector</title>
+  <meta name="description" content="A personal catalog for physical media you own. Photograph a case or scan a barcode, keep the shelf on your iPhone, and trade with other collectors." />
+  <meta name="theme-color" content="#1F478C" />
   <link rel="canonical" href="https://snapmedia.app/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Snap Media — Identify, collect &amp; trade physical media" />
-  <meta property="og:description" content="Snap a case. Keep a shelf. Trade with collectors. iOS and Android beta." />
-  <meta property="og:image" content="assets/img/og.png" />
+  <meta property="og:title" content="Snap Media — Physical Media Collector" />
+  <meta property="og:description" content="A personal catalog for physical media you own — DVD, Blu-ray, 4K, steelbook, HD DVD, VHS, LaserDisc, cassette, and vinyl." />
+  <meta property="og:url" content="https://snapmedia.app/" />
+  <meta property="og:image" content="https://snapmedia.app/assets/img/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Snap Media — Identify, collect &amp; trade physical media" />
-  <meta name="twitter:description" content="AI-assisted media ID, a personal collection, and peer trades. iOS and Android beta." />
-  <meta name="twitter:image" content="assets/img/og.png" />
+  <meta name="twitter:title" content="Snap Media — Physical Media Collector" />
+  <meta name="twitter:description" content="A personal catalog for physical media you own. For iPhone." />
+  <meta name="twitter:image" content="https://snapmedia.app/assets/img/og.png" />
 
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
-  <link rel="manifest" href="site.webmanifest" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/site.css?v=2" />
+  <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/assets/img/favicon-16.png" sizes="16x16" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
 
   <script type="application/ld+json">
   {
@@ -35,14 +32,27 @@
     "@type": "SoftwareApplication",
     "name": "Snap Media",
     "applicationCategory": "LifestyleApplication",
-    "operatingSystem": "iOS, Android",
-    "description": "Photograph DVDs, VHS, Blu-ray, cassettes, and vinyl. AI-assisted identification, a personal collection, and peer-to-peer trades.",
-    "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/PreOrder",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+    "operatingSystem": "iOS",
+    "description": "A personal catalog for physical media you own — DVD, Blu-ray, 4K, steelbook, HD DVD, VHS, LaserDisc, cassette, and vinyl.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "True Family",
+      "email": "admin@snapcollectibles.com"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Snap Media Plus yearly",
+        "price": "14.99",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Snap Media Plus monthly",
+        "price": "1.99",
+        "priceCurrency": "USD"
+      }
+    ]
   }
   </script>
 </head>
@@ -50,553 +60,71 @@
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="#top">
-        <img src="assets/img/mark.svg" width="28" height="28" alt="" />
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
         <span class="brand-name">Snap Media</span>
+        <span class="brand-tag">Physical Media Collector</span>
       </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#snap">Snap</a>
-        <a href="#collection">Collection</a>
-        <a href="#trades">Trades</a>
-        <a href="#faq">FAQ</a>
-        <a href="privacy.html">Privacy</a>
-        <a class="btn btn-primary nav-cta" href="#download">Request beta</a>
-      </nav>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
-        <span class="bars" aria-hidden="true"></span>
-      </button>
+      <a class="header-mail" href="mailto:admin@snapcollectibles.com">admin@snapcollectibles.com</a>
     </div>
   </header>
 
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
-    <a href="#snap">Snap</a>
-    <a href="#collection">Collection</a>
-    <a href="#trades">Trades</a>
-    <a href="#faq">FAQ</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="#download">Request beta</a>
+  <nav class="site-nav" aria-label="Pages">
+    <div class="wrap">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/app">The app</a>
+      <a href="/plus">Plus</a>
+      <a href="/support">Support</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
   </nav>
 
   <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-bg" aria-hidden="true">
-        <img src="assets/img/hero-disc.webp" alt="" width="1280" height="720" />
-      </div>
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="kicker">iOS + Android · In beta</p>
-          <h1 class="display">Snap<br />Media</h1>
-          <p class="hero-promise">Identify. Collect. Trade.</p>
-          <p class="hero-pitch">The pocket companion for physical media you actually own. Photograph a case, disc, J-card, or label. Get assistive ID with confidence notes. Keep a shelf. Trade peer-to-peer — not a storefront.</p>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="#download">Request beta access</a>
-            <a class="btn btn-ghost" href="#snap">See how it IDs</a>
-          </div>
-          <p class="hero-micro">iOS and Android in beta · Category-first snap · Honest estimates · Your shelf stays yours</p>
-        </div>
+    <div class="wrap">
+      <h1>Snap Media</h1>
+      <p class="subhead">Physical Media Collector</p>
+      <p class="lead">Photograph a case or scan a barcode, keep the shelf on your iPhone, and trade with other collectors.</p>
+      <p>A personal catalog for physical media you own — DVD, Blu-ray, 4K, steelbook, HD DVD, VHS, LaserDisc, cassette, and vinyl.</p>
 
-        <div class="hero-stage">
-          <div class="hero-phones">
-            <figure class="device device-float device-back">
-              <img src="assets/screens/Snap.webp" width="1344" height="2992" alt="Snap Media camera: pick DVD, VHS, Blu-ray, or Cassette Tape, then snap the title." />
-            </figure>
-            <figure class="device device-float device-main">
-              <img src="assets/screens/Home.webp" width="1344" height="2992" alt="Snap Media home: portfolio value, Snap and Collection actions, wishlist, for trade, and grails." />
-            </figure>
-          </div>
-          <div class="hero-chips">
-            <div class="chip chip-health">
-              <div class="label">Match</div>
-              <strong>93% · Assistive</strong>
-              <span>The Matrix · DVD · 1999</span>
-            </div>
-            <div class="chip chip-dna">
-              <div class="label">Format</div>
-              <strong class="mono">DVD</strong>
-              <span>Cover · spine · disc face</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <ul class="stats">
+        <li class="card">
+          <p class="stat-label">Owned</p>
+          <p class="stat-caption">Titles you own</p>
+        </li>
+        <li class="card">
+          <p class="stat-label">Wishlist</p>
+          <p class="stat-caption">Titles you want</p>
+        </li>
+        <li class="card">
+          <p class="stat-label">Spent</p>
+          <p class="stat-caption">Amount spent</p>
+        </li>
+      </ul>
 
-    <div class="strip">
-      <div class="wrap strip-row">
-        <span><b>Live</b> Snap, Collection, Trades, Backup</span>
-        <span><b>Honest</b> Assistive ID, not authentication</span>
-        <span><b>Private</b> Photos are not sold</span>
-        <span><b>Independent</b> Not a studio. Not a store.</span>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://apps.apple.com/">Download on the App Store</a>
+        <a class="btn btn-secondary" href="/privacy">Privacy Policy</a>
+        <a class="btn btn-secondary" href="/terms">Terms of Use</a>
       </div>
+
+      <p class="note">Settings can sync to iCloud or export a file you keep. You can delete the account and the collection from Settings.</p>
     </div>
-
-    <section class="section" id="who">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="kicker">Who it’s for</p>
-          <h2 class="display">Built for the shelf, not the mall.</h2>
-          <p class="lede muted">DVD stacks, VHS clamshells, vinyl crates, and tape drawers share the same collection. The format changes what the model looks for. The honesty does not.</p>
-        </div>
-        <div class="audience">
-          <article>
-            <h3>DVD / Blu-ray</h3>
-            <p>Cases, spines, discs, steelbooks. Pick the format so a Matrix DVD and a Reloaded Blu-ray don’t get swapped.</p>
-          </article>
-          <article>
-            <h3>VHS hunters</h3>
-            <p>Clamshells, slipcases, labels. Edition cues and condition notes live next to the title, not in a notes app.</p>
-          </article>
-          <article>
-            <h3>Vinyl crates</h3>
-            <p>Jacket, spine, label. Discogs-style research links when you want a second look. Estimates stay estimates.</p>
-          </article>
-          <article>
-            <h3>Tape traders</h3>
-            <p>Cassettes, MiniDisc, and Other. Wishlist extras. Trade peer-to-peer when you actually want to swap.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="pillars" style="padding-top: 0;">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="kicker">Permanent pillars</p>
-          <h2 class="display">Six things that do not ship as vapor.</h2>
-        </div>
-        <div class="pillar-grid">
-          <article class="pillar">
-            <div class="num">01</div>
-            <h3>Camera snap</h3>
-            <p>Cover, spine, disc, J-card, or vinyl label. Camera, gallery, or barcode. Manual add if you already know it.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">02</div>
-            <h3>Category first</h3>
-            <p>DVD, VHS, Blu-ray, Cassette Tape, Records, Other. The model looks at the right features.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">03</div>
-            <h3>Assistive ID</h3>
-            <p>Ranked candidates with confidence notes. Not studio authentication. Not a guarantee.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">04</div>
-            <h3>The shelf</h3>
-            <p>Owned, wishlist, for sale. List view and a shelf-style photo view for the titles you actually own.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">05</div>
-            <h3>Peer trades</h3>
-            <p>Post extras, browse the feed, chat in-app. Trades are between collectors — not insured here.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">06</div>
-            <h3>Export &amp; backup</h3>
-            <p>File export, optional cloud while signed in. Betas can wipe local data — back up after you scan.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="snap">
-      <div class="wrap split">
-        <div>
-          <p class="kicker">Snap <span class="badge badge-live">Live</span></p>
-          <h2 class="display">Pick a format. Then snap the title.</h2>
-          <p class="lede">Camera or gallery. Barcode when the case still has a UPC. Manual add if you skip AI.</p>
-          <p class="muted">Category first so the model hunts cover art, studio, year, and edition instead of treating every rectangle like a DVD. Good light and a filled frame still win.</p>
-          <ul class="feature-list">
-            <li>DVD, VHS, Blu-ray, Cassette Tape, Records, Other — LaserDisc, MiniDisc, Betamax, 4K, steelbook.</li>
-            <li>Camera or photo library. Scan a barcode when the case still has a readable UPC.</li>
-            <li>Review assistive results with confidence-style notes before you save.</li>
-            <li>Add by hand if you do not want a photo in the loop.</li>
-            <li>Photos are resized for identification. They are not sold.</li>
-          </ul>
-        </div>
-        <div class="device-pair">
-          <figure class="device">
-            <img src="assets/screens/Snap.webp" width="1344" height="2992" alt="Android Snap tab with format chips and Camera, Gallery, Scan barcode actions." />
-          </figure>
-          <figure class="device">
-            <img src="assets/screens/GetStarted.webp" width="1344" height="2992" alt="Get started: Sign in with Google, optional trade username, or continue as guest." />
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="identify" style="padding-top:0;">
-      <div class="wrap split reverse">
-        <div>
-          <p class="kicker">Identify <span class="badge badge-live">Live</span></p>
-          <h2 class="display">Title, year, format — then a shortlist.</h2>
-          <p class="lede">Assistive candidates with confidence notes. Research links when you want a second source.</p>
-          <p class="muted">Free includes a photo-ID allotment. You confirm or edit the title before it hits the shelf. Hard covers can go to a stronger model. Easy ones stay cheap.</p>
-          <ul class="feature-list">
-            <li>Reads cover art, spine text, studio or label, year, and edition cues.</li>
-            <li>Catalog hit first when the title is already known. API only if needed.</li>
-            <li>Confidence-style notes on candidates. Low score is labeled, not hidden.</li>
-            <li>Lookups: eBay sold/active, Discogs, Mercari — format-aware.</li>
-            <li>Estimates only. Not studio authentication. Not an appraisal.</li>
-          </ul>
-        </div>
-        <figure class="device device-solo">
-          <img src="assets/screens/Disclaimer.webp" width="1344" height="2992" alt="Before you start: independent collector app, photos not sold, values are estimates." />
-        </figure>
-      </div>
-    </section>
-
-    <section class="ember-band">
-      <div class="wrap">
-        <p class="kicker">Honesty for the shelf</p>
-        <h2 class="display">A high confidence is still not a studio stamp.</h2>
-        <p class="lede" style="max-width: 46ch;">The app says that out loud. Marketplace links are research. Trades are peer-to-peer. Snap Media does not authenticate, appraise, or insure a swap.</p>
-      </div>
-    </section>
-
-    <section class="section" id="collection">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="kicker">Collection <span class="badge badge-live">Live</span></p>
-          <h2 class="display">Owned, wishlist, for sale. One shelf.</h2>
-          <p class="lede muted">Search, filter by format, track paid vs estimated. Empty states push you to snap a real title, not browse a store.</p>
-        </div>
-        <div class="tool-grid">
-          <article class="tool">
-            <h3>Home</h3>
-            <p class="muted">Portfolio value, items, streak. Snap and Collection one tap away. Wishlist, for trade, grails.</p>
-            <div class="spec-row">
-              <span class="spec">Paid vs value</span>
-              <span class="spec">Streak</span>
-            </div>
-          </article>
-          <article class="tool">
-            <h3>Shelf</h3>
-            <p class="muted">Owned and wishlist. Filter DVD through Records. Search the titles you already logged.</p>
-            <div class="spec-row">
-              <span class="spec">Owned</span>
-              <span class="spec">Wishlist</span>
-            </div>
-          </article>
-          <article class="tool">
-            <h3>Detail</h3>
-            <p class="muted">Condition, edition cues, studio or label, year, notes. Edit so the shelf stays yours.</p>
-            <div class="spec-row">
-              <span class="spec">Notes</span>
-              <span class="spec">Edition</span>
-            </div>
-          </article>
-          <article class="tool">
-            <h3>Backup</h3>
-            <p class="muted">Export, import, optional cloud while signed in. Betas can wipe local data — back up after you scan.</p>
-            <div class="spec-row">
-              <span class="spec">Export</span>
-              <span class="spec">Cloud optional</span>
-            </div>
-          </article>
-        </div>
-        <div class="device-row" style="margin-top: 36px;">
-          <figure class="device">
-            <img src="assets/screens/Home.webp" width="1344" height="2992" alt="Home dashboard with portfolio value and Snap / Collection actions." />
-            <figcaption>Home</figcaption>
-          </figure>
-          <figure class="device">
-            <img src="assets/screens/Collection.webp" width="1344" height="2992" alt="Collection tab with Owned, Wishlist, and format filters." />
-            <figcaption>Collection</figcaption>
-          </figure>
-          <figure class="device">
-            <img src="assets/screens/Snap.webp" width="1344" height="2992" alt="Snap tab: pick a format, then Camera, Gallery, or Scan barcode." />
-            <figcaption>Snap</figcaption>
-          </figure>
-          <figure class="device">
-            <img src="assets/screens/Settings.webp" width="1344" height="2992" alt="Settings: Google sign-in, trade username, export, import, and cloud backup." />
-            <figcaption>Settings</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="trades">
-      <div class="wrap split">
-        <div>
-          <p class="kicker">Trades <span class="badge badge-live">Live</span></p>
-          <h2 class="display">Peer-to-peer. Not a store. Not insured.</h2>
-          <p class="lede">Post extras from inventory. Browse the feed. Chat in-app. Arrange the physical swap yourself.</p>
-          <p class="muted">Set a username so other collectors know who you are. Optional contact helpers if you want them. Snap Media does not escrow items or money.</p>
-          <ul class="feature-list">
-            <li>Post an offer from titles you already logged.</li>
-            <li>Swipe shortcuts: left to delete, right to pre-fill a trade.</li>
-            <li>Trade feed, trade detail, and in-app chat.</li>
-            <li>Friends and optional contact details you choose to share.</li>
-            <li>Collector events as typed locations — not GPS tracking.</li>
-          </ul>
-        </div>
-        <figure class="device device-solo">
-          <img src="assets/screens/Settings.webp" width="1344" height="2992" alt="Settings with trade username, Google sign-in, and backup controls." />
-        </figure>
-      </div>
-    </section>
-
-    <section class="section" id="how" style="padding-top:0;">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="kicker">How it works</p>
-          <h2 class="display">Snap. Rank. Save. Trade.</h2>
-        </div>
-        <div class="steps">
-          <article class="step">
-            <h3>Capture the title</h3>
-            <p>Pick the format. Photograph the cover, spine, disc, J-card, or label. Or scan a barcode. Or add it by hand.</p>
-          </article>
-          <article class="step">
-            <h3>Review the shortlist</h3>
-            <p>Assistive matches with confidence notes, year, and format. Open marketplace research if you want a second look.</p>
-          </article>
-          <article class="step">
-            <h3>Save to the shelf</h3>
-            <p>Condition, paid, notes, photo. Wishlist if it isn’t yours yet. Export after you scan so a beta never eats the crate.</p>
-          </article>
-          <article class="step">
-            <h3>Trade if you want</h3>
-            <p>Post extras, browse the feed, chat. Trades stay between collectors. The shelf stays local unless you sync or share.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="privacy">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="kicker">Ownership</p>
-          <h2 class="display">You own the shelf. That is a design constraint.</h2>
-          <p class="lede muted">Independent collector app. Not a studio. Not a store. Not a grading service.</p>
-        </div>
-        <div class="pillar-grid">
-          <article class="pillar">
-            <div class="num">Photos</div>
-            <h3>ID, then silence</h3>
-            <p>A resized photo may go to the identification provider so the app can suggest a title. Photos are not sold. Manual add never sends a photo.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">Estimates</div>
-            <h3>Not a slab</h3>
-            <p>Identifications and value ranges are estimates only — not appraisals, studio authentication, or guaranteed matches.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">Backup</div>
-            <h3>Export first</h3>
-            <p>Betas can wipe local data. Export or optional cloud sync after you scan. The shelf should survive the next build.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">Trades</div>
-            <h3>Between you</h3>
-            <p>Peer-to-peer. No escrow. No insurance. Username and optional contact are information you choose to share.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">Age</div>
-            <h3>Not for under 13</h3>
-            <p>Not directed at children under 13. Sign-in is Apple on iOS, Google on Android, or continue as guest.</p>
-          </article>
-          <article class="pillar">
-            <div class="num">Site</div>
-            <h3>Three fields</h3>
-            <p>This site is static. The beta form sends App name, phone OS, and email. No analytics SDK is bundled.</p>
-          </article>
-        </div>
-        <p style="margin-top:24px;"><a href="privacy.html">Read the full privacy page →</a></p>
-      </div>
-    </section>
-
-    <section class="section" id="not" style="padding-top:0;">
-      <div class="wrap split">
-        <div>
-          <p class="kicker">What this is</p>
-          <h2 class="display">A collector tool. Labeled as such.</h2>
-          <p class="muted">Identify, catalog, export, optionally trade. Free includes a photo-ID allotment, your collection, and catalog browse. Optional Pro is an auto-renewing store subscription on each platform.</p>
-        </div>
-        <div>
-          <p class="kicker" style="margin-top:8px;">What this is not</p>
-          <ul class="not-list">
-            <li>Not a studio or label app.</li>
-            <li>Not a store.</li>
-            <li>Not official authentication.</li>
-            <li>Not an appraisal.</li>
-            <li>Not “AI that shops for you.”</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="wrap wrap-narrow">
-        <div class="section-head">
-          <p class="kicker">FAQ</p>
-          <h2 class="display">Straight answers for collectors.</h2>
-          <p class="lede muted">What Snap Media does — and what it does not claim.</p>
-        </div>
-        <div class="faq-list">
-          <div class="faq-item is-open">
-            <button type="button" aria-expanded="true">How does Android testing work?<span class="plus" aria-hidden="true">+</span></button>
-            <div class="faq-a">
-              Google Play does not auto-email testers. After you submit an Android request, this page shows the internal test URL. Copy and keep it. The URL is
-              <span class="mono">https://play.google.com/apps/internaltest/4700993420542853350</span>
-              — it becomes active once your email is added to the tester list. Please allow up to a few hours.
-            </div>
-          </div>
-          <div class="faq-item">
-            <button type="button" aria-expanded="false">How do I join the iOS beta?<span class="plus" aria-hidden="true">+</span></button>
-            <div class="faq-a">Request a tester slot on this page. Pick iOS and leave your email. We follow up with next steps. Same three fields: App name, phone OS, email.</div>
-          </div>
-          <div class="faq-item">
-            <button type="button" aria-expanded="false">Is this official studio or label authentication?<span class="plus" aria-hidden="true">+</span></button>
-            <div class="faq-a">No. Snap Media offers AI-assisted identification for personal collecting and trading research. It is not official studio or label authentication, appraisal, or a guarantee of authenticity or value.</div>
-          </div>
-          <div class="faq-item">
-            <button type="button" aria-expanded="false">Why pick a category when I scan?<span class="plus" aria-hidden="true">+</span></button>
-            <div class="faq-a">Categories (DVD, VHS, Blu-ray, Cassette Tape, Records, Other) help focus identification. Choosing the right format often improves useful results — use Other for LaserDisc, MiniDisc, Betamax, and similar.</div>
-          </div>
-          <div class="faq-item">
-            <button type="button" aria-expanded="false">How do trades work?<span class="plus" aria-hidden="true">+</span></button>
-            <div class="faq-a">Trades are peer-to-peer between users. Post offers, pick a title from inventory, browse the trade feed, open trade detail, and chat in-app. Snap Media does not insure or guarantee trades.</div>
-          </div>
-          <div class="faq-item">
-            <button type="button" aria-expanded="false">Do I need to sign in?<span class="plus" aria-hidden="true">+</span></button>
-            <div class="faq-a">You can scan and organize locally. Cloud backup, restore, and account features need Sign in with Apple on iOS or Google on Android.</div>
-          </div>
-          <div class="faq-item">
-            <button type="button" aria-expanded="false">What is the camera used for?<span class="plus" aria-hidden="true">+</span></button>
-            <div class="faq-a">Photographing media — covers, spines, discs, tapes, and sleeves — for identification and your collection. A resized photo may be sent to the identification provider so the app can suggest a title. Photos are not sold.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="download">
-      <div class="wrap">
-        <div class="cta-panel">
-          <p class="kicker">Beta</p>
-          <h2 class="display">iOS and Android. Both in beta.</h2>
-          <p class="lede muted" style="max-width:44ch;">Snap Media is in closed beta on iPhone / iPad and on Android. Request a tester slot. We get App name, phone OS, and your email — nothing else.</p>
-          <div class="btn-row" style="margin-top:8px;">
-            <span class="store-btn" aria-disabled="true">
-              <small>In beta</small>
-              <b>iOS</b>
-            </span>
-            <span class="store-btn" aria-disabled="true">
-              <small>In beta</small>
-              <b>Android</b>
-            </span>
-          </div>
-          <form class="form" id="beta-form" novalidate>
-            <input type="hidden" name="_subject" value="Snap Media beta tester request" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-            <label for="app-name">App name</label>
-            <input id="app-name" name="App Name" type="text" value="Snap Media" readonly />
-
-            <fieldset class="os-fieldset">
-              <legend>Phone OS</legend>
-              <div class="os-choice">
-                <label class="os-card">
-                  <input type="radio" name="Phone OS" value="iOS" required />
-                  <span class="os-card-title">iOS</span>
-                  <span class="os-card-meta">iPhone + iPad</span>
-                </label>
-                <label class="os-card">
-                  <input type="radio" name="Phone OS" value="Android" />
-                  <span class="os-card-title">Android</span>
-                  <span class="os-card-meta">Phone + tablet</span>
-                </label>
-              </div>
-            </fieldset>
-
-            <p class="android-note" id="android-note" hidden>
-              After you submit an Android request we show the Play test URL on this page. Google does not email testers automatically — you have to keep that URL.
-            </p>
-
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@shelf.local" required />
-
-            <button class="btn btn-primary" type="submit">Request to be a beta tester</button>
-            <p class="form-note">Sends App name, phone OS, and email to <span class="mono">admin@snapcollectibles.com</span>. No newsletter.</p>
-            <p class="form-status" id="beta-status" role="status"></p>
-          </form>
-
-          <p class="form-status" id="ios-done" hidden role="status"></p>
-
-          <div id="android-gate" hidden>
-            <p class="gate-kicker">Android tester link</p>
-            <h3 class="gate-title">Copy this URL. Then confirm you kept it.</h3>
-            <p class="gate-copy">
-              Request received for <span class="mono" data-gate-email></span>.
-              This URL will be active once your email has been added to the tester list.
-              Please allow up to a few hours. Google Play does not automatically send emails to testers.
-            </p>
-            <div class="url-box">
-              <code id="play-url">https://play.google.com/apps/internaltest/4700993420542853350</code>
-              <div class="url-actions">
-                <button class="btn-copy" type="button" id="copy-url">Copy URL</button>
-                <a class="btn-copy" href="https://play.google.com/apps/internaltest/4700993420542853350" target="_blank" rel="noopener noreferrer">Open in Play</a>
-              </div>
-              <p class="form-note" id="copy-status" role="status"></p>
-            </div>
-            <div class="ack-row">
-              <input id="ack-copied" type="checkbox" />
-              <label for="ack-copied">I have copied / saved this URL. I understand it stays inactive until my email is on the tester list — that can take a few hours.</label>
-            </div>
-            <button class="btn btn-primary" type="button" id="ack-btn" disabled>I have kept this URL</button>
-            <p class="form-status" id="ack-confirmed" hidden data-state="ok">Acknowledged. Keep the URL. We will add <span data-gate-email></span> to the Android tester list.</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-grid">
-      <div class="footer-brand">
-        <a class="brand" href="#top">
-          <img src="assets/img/mark.svg" width="28" height="28" alt="" />
-          <span class="brand-name">Snap Media</span>
-        </a>
-        <p>Identify physical media. Keep the shelf. Independent, on purpose.</p>
-      </div>
-      <div class="footer-col">
-        <h2>Product</h2>
-        <a href="#snap">Snap</a>
-        <a href="#collection">Collection</a>
-        <a href="#trades">Trades</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="footer-col">
-        <h2>Trust</h2>
-        <a href="privacy.html">Privacy</a>
-        <a href="#privacy">Ownership</a>
-        <a href="#not">What this is not</a>
-      </div>
-      <div class="footer-col">
-        <h2>Get it</h2>
-        <a href="#download">Request beta</a>
-        <span class="muted">iOS + Android beta</span>
-      </div>
-    </div>
-    <div class="wrap footer-legal">
-      <span>© <span data-year></span> Snap Media. All rights reserved.</span>
-      <span>Independent collector app · Estimates only · iOS + Android beta</span>
+    <div class="wrap">
+      <p class="disclaimer">Independent collector app for DVDs, VHS, Blu-ray, cassettes, and records. Not affiliated with any studio, label, or trademark owner. All trademarks belong to their respective owners.</p>
+      <p class="footer-meta">Published by True Family · <a href="mailto:admin@snapcollectibles.com">admin@snapcollectibles.com</a></p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/app">The app</a>
+        <a href="/plus">Plus</a>
+        <a href="/support">Support</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
     </div>
   </footer>
-
-  <svg width="0" height="0" aria-hidden="true" focusable="false">
-    <defs>
-      <linearGradient id="ember" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#FFD600" />
-        <stop offset="0.55" stop-color="#FF6A00" />
-        <stop offset="1" stop-color="#FF2D2D" />
-      </linearGradient>
-    </defs>
-  </svg>
-
-  <script src="assets/js/site.js"></script>
 </body>
 </html>
